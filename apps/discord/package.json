@@ -1,5 +1,5 @@
 {
-    "name": "rbbp-discord",
+    "name": "discord",
     "version": "1.0.0",
     "description": "",
     "type": "module",
@@ -15,9 +15,13 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "discord.js": "^14.25.1"
+        "@t3-oss/env-core": "^0.13.10",
+        "discord.js": "^14.25.1",
+        "dotenv": "^17.2.3",
+        "zod": "^4.2.1"
     },
     "devDependencies": {
+        "@rbbp/typescript-config": "workspace:*",
         "@types/node": "^25.0.3",
         "prettier": "^3.7.4",
         "tsup": "^8.5.1",

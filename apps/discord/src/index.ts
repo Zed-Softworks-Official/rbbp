@@ -5,14 +5,14 @@ import {
     Events,
     Interaction
 } from 'discord.js'
-import { ConvexHttpClient } from '@rbbp/backend'
 
 import { env } from '~/env'
 import { commands } from '~/commands'
+
+import { registerRoleUpdatedEvent } from '~/events/role-updated'
+
 import type { ExtendedClient } from '~/utils/types'
 import { tryCatch } from '~/utils/try-catch'
-
-const convex = new ConvexHttpClient(env.CONVEX_URL)
 
 const client = new Client({
     intents: [
@@ -77,5 +77,6 @@ client.on(Events.InteractionCreate, async (interaction: Interaction) => {
     }
 })
 
+registerRoleUpdatedEvent(client)
+
 client.login(env.DISCORD_TOKEN)
-export { client, convex }

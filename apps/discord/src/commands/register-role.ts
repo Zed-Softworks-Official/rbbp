@@ -9,7 +9,9 @@ import { api } from '@rbbp/backend/api'
 
 import type { Command } from '~/utils/types'
 import { tryCatch } from '~/utils/try-catch'
-import { convex } from '~/.'
+
+import { convex } from '~/lib/convex'
+import { cache } from '~/lib/redis'
 
 export const registerRole: Command = {
     data: new SlashCommandBuilder()
@@ -49,6 +51,8 @@ export const registerRole: Command = {
             roleId: role.id,
             roleName: role.name
         })
+
+        await cache(guildId, role.id)
 
         await interaction.reply(`Role **${role?.name}** registered as protected.`)
     },

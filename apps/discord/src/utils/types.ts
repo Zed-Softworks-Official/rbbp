@@ -17,3 +17,4 @@ export interface Command {
 export interface ExtendedClient extends Client {
     commands: Collection<string, Command>
 }
+

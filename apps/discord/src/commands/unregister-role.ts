@@ -3,9 +3,11 @@ import { SlashCommandBuilder, PermissionFlagsBits } from 'discord.js'
 import type { CommandInteraction, AutocompleteInteraction } from 'discord.js'
 import { api } from '@rbbp/backend/api'
 
-import { convex } from '~/.'
 import type { Command } from '~/utils/types'
 import { tryCatch } from '~/utils/try-catch'
+
+import { convex } from '~/lib/convex'
+import { invalidate } from '~/lib/redis'
 
 export const unregisterRole: Command = {
     data: new SlashCommandBuilder()
@@ -45,6 +47,8 @@ export const unregisterRole: Command = {
             guildId,
             roleId,
         })
+
+        await invalidate(guildId, role.id)
 
         await interaction.reply(`Role **${role.name}** unregistered as protected.`)
     },

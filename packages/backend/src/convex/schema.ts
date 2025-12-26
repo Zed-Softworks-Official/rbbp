@@ -22,4 +22,10 @@ export default defineSchema({
     .index("byUserId", ["userId"])
     .index("byGuildId", ["guildId"])
     .index("byTime", ["banTimestamp"]),
+    protectedRoles: defineTable({
+        guildId: v.string(),
+        roleId: v.number(),
+        roleName: v.string()
+    })
+    .index("byGuildId", ["guildId"]),
 });

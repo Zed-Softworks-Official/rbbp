@@ -3,8 +3,9 @@ import { createEnv } from '@t3-oss/env-core'
 
 export const env = createEnv({
     server: {
+        DISCORD_CLIENT_ID: z.string(),
         DISCORD_TOKEN: z.string()
     },
     runtimeEnv: process.env,
-    emptyStringIsUndefined: true
+    emptyStringAsUndefined: true
 })

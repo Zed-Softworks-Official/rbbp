@@ -27,6 +27,7 @@
         "DISCORD_CLIENT_ID",
         "DISCORD_GUILD_ID",
         "CONVEX_URL",
-        "NODE_ENV"
+        "NODE_ENV",
+        "CONVEX_DEPLOY_KEY"
     ]
 }

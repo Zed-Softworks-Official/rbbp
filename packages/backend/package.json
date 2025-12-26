@@ -3,7 +3,8 @@
     "private": true,
     "version": "1.0.0",
     "scripts": {
-        "dev": "pnpm convex dev"
+        "dev": "pnpm convex dev",
+        "build": "pnpm convex deploy"
     },
     "type": "module",
     "exports": {

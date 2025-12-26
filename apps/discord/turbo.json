@@ -1,0 +1,13 @@
+{
+    "$schema": "https://turbo.build/schema.json",
+    "extends": ["//"],
+    "tasks": {
+        "deploy-commands": {
+            "outputs": []
+        },
+        "dev": {
+            "dependsOn": ["deploy-commands"],
+            "persistent": true
+        }
+    }
+}

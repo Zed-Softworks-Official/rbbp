@@ -8,6 +8,8 @@
  * @module
  */
 
+import type * as ban from "../ban.js";
+import type * as log from "../log.js";
 import type * as roles from "../roles.js";
 
 import type {
@@ -17,6 +19,8 @@ import type {
 } from "convex/server";
 
 declare const fullApi: ApiFromModules<{
+  ban: typeof ban;
+  log: typeof log;
   roles: typeof roles;
 }>;
 

@@ -28,4 +28,8 @@ export default defineSchema({
         roleName: v.string()
     })
     .index("byGuildId", ["guildId"]),
+    logChannels: defineTable({
+        guildId: v.string(),
+        channelId: v.string(),
+    }).index("byGuildId", ["guildId"]),
 });

@@ -17,7 +17,7 @@ export const addProtectedRole = mutation({
 export const removeProtectedRole = mutation({
     args: {
         guildId: v.string(),
-        roleId: v.number()
+        roleId: v.string()
     },
     handler: async (ctx, args) => {
         const role = await ctx.db.query('protectedRoles')

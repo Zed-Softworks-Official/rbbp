@@ -7,6 +7,8 @@ import { convex } from '~/lib/convex'
 import type { ExtendedClient } from '~/utils/types'
 import { tryCatch } from '~/utils/try-catch'
 
+import { env } from '~/env'
+
 export function registerRoleUpdatedEvent(client: ExtendedClient) {
     client.on(Events.GuildAvailable, async (guild) => {
         await loadProtectedRoles(guild.id)
@@ -52,7 +54,13 @@ async function handleProtectedRoleAdded(
 
         await convex.mutation(api.ban.logBan, userData)
 
-        // TODO: Ban User
+        if (env.NODE_ENV === 'development' ) {
+            await member.roles.remove(roleId)
+        } else {
+            await member.ban({
+                reason: 'Potential Bot Protection Violation'
+            })
+        }
 
         if (!logChannelId) return
         const logChannel = member.guild.channels.cache.get(logChannelId) as TextChannel
@@ -60,7 +68,7 @@ async function handleProtectedRoleAdded(
 
         const embed = new EmbedBuilder()
         .setColor(Colors.Red)
-        .setTitle(`Potential Bot Prottection Violation`)
+        .setTitle(`Potential Bot Protection Violation`)
         .setThumbnail(userData.avatar)
         .addFields(
             { name: 'User', value: `${userData.tag}\n<@${userData.userId}>`, inline: true },

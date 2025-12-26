@@ -26,6 +26,7 @@
         "DISCORD_TOKEN",
         "DISCORD_CLIENT_ID",
         "DISCORD_GUILD_ID",
-        "CONVEX_URL"
+        "CONVEX_URL",
+        "NODE_ENV"
     ]
 }

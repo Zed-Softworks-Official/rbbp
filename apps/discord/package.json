@@ -1,5 +1,5 @@
 {
-    "name": "discord",
+    "name": "@rbbp/discord",
     "version": "1.0.0",
     "description": "",
     "type": "module",
@@ -15,7 +15,7 @@
     },
     "keywords": [],
     "author": "",
-    "license": "ISC",
+    "license": "MIT",
     "dependencies": {
         "@t3-oss/env-core": "^0.13.10",
         "discord.js": "^14.25.1",

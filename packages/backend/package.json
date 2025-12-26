@@ -1,0 +1,15 @@
+{
+    "name": "@rbbp/backend",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "pnpm convex dev"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+        "convex": "^1.31.2"
+    }
+}

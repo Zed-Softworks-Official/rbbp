@@ -1,13 +1,17 @@
 import {
     SlashCommandBuilder,
+    SlashCommandOptionsOnlyBuilder,
     CommandInteraction,
+    ChatInputCommandInteraction,
+    AutocompleteInteraction,
     Client,
     Collection,
 } from 'discord.js'
 
 export interface Command {
-    data: SlashCommandBuilder
-    execute: (interaction: CommandInteraction) => Promise<void>
+    data: SlashCommandBuilder | SlashCommandOptionsOnlyBuilder
+    execute: (interaction: CommandInteraction | ChatInputCommandInteraction) => Promise<void>
+    autocomplete?: (interaction: AutocompleteInteraction) => Promise<void>
 }
 
 export interface ExtendedClient extends Client {

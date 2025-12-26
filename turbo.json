@@ -25,5 +25,7 @@
     "globalEnv": [
         "DISCORD_TOKEN",
         "DISCORD_CLIENT_ID",
+        "DISCORD_GUILD_ID",
+        "CONVEX_URL"
     ]
 }

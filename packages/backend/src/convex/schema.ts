@@ -24,7 +24,7 @@ export default defineSchema({
     .index("byTime", ["banTimestamp"]),
     protectedRoles: defineTable({
         guildId: v.string(),
-        roleId: v.number(),
+        roleId: v.string(),
         roleName: v.string()
     })
     .index("byGuildId", ["guildId"]),

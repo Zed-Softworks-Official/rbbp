@@ -5,7 +5,8 @@ export const env = createEnv({
     server: {
         DISCORD_CLIENT_ID: z.string(),
         DISCORD_TOKEN: z.string(),
-        DISCORD_GUILD_ID: z.string().optional()
+        DISCORD_GUILD_ID: z.string().optional(),
+        CONVEX_URL: z.url()
     },
     runtimeEnv: process.env,
     emptyStringAsUndefined: true

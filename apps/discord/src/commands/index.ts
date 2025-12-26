@@ -1,5 +1,7 @@
 import { ping } from './ping'
+import { registerRole } from './register-role'
 
 export const commands = {
-    ping
+    ping,
+    registerRole
 }

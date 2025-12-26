@@ -4,7 +4,7 @@ import { mutation, query } from '@rbbp/backend/server'
 export const addProtectedRole = mutation({
     args: {
         guildId: v.string(),
-        roleId: v.number(),
+        roleId: v.string(),
         roleName: v.string()
     },
     handler: async (ctx, args) => {

@@ -6,7 +6,7 @@
     "main": "index.js",
     "scripts": {
         "dev": "pnpm with-env tsx watch src/index.ts",
-        "build": "tsup",
+        "build": "pnpm with-env tsx src/scripts/deploy-commands.ts && pnpm tsup",
         "start": "node dist/index.js",
         "format": "prettier --write \"src/**/*.ts\"",
         "lint": "prettier --check \"src/**/*.ts\"",

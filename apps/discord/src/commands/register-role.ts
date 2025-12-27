@@ -20,7 +20,7 @@ export const registerRole: Command = {
         .setDefaultMemberPermissions(PermissionFlagsBits.BanMembers)
         .addStringOption(opt =>
             opt.setName('role')
-                .setDescription('Start typeing the role name')
+                .setDescription('Start typing the role name')
                 .setAutocomplete(true)
                 .setRequired(true)
         ),

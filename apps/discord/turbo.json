@@ -6,7 +6,12 @@
             "outputs": []
         },
         "dev": {
+            "outputs": ["dist/**"],
             "dependsOn": ["deploy-commands"],
+            "persistent": true
+        },
+        "start": {
+            "dependsOn": ["build"],
             "persistent": true
         }
     }

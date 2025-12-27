@@ -19,6 +19,11 @@
         },
         "deploy-commands": {
             "dependsOn": ["^deploy-commands"]
+        },
+        "start": {
+            "dependsOn": ["build"],
+            "cache": false,
+            "persistent": true
         }
     },
     "globalDependencies": ["**/.env*"],

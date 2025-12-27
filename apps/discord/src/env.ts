@@ -13,8 +13,8 @@ export const env = createEnv({
 
     CONVEX_URL: z.url(),
 
-    UPSTASH_REDIS_REST_URL: z.string().optional(),
-    UPSTASH_REDIS_REST_TOKEN: z.string().optional(),
+    UPSTASH_REDIS_REST_URL: z.string(),
+    UPSTASH_REDIS_REST_TOKEN: z.string(),
   },
   runtimeEnv: process.env,
   emptyStringAsUndefined: true,

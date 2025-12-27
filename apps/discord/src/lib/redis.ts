@@ -5,19 +5,10 @@ import { convex } from "~/lib/convex";
 
 import { env } from "~/env";
 
-function getRedis() {
-  if (!env.UPSTASH_REDIS_REST_URL || !env.UPSTASH_REDIS_REST_TOKEN) {
-    throw new Error(
-      "UPSTASH_REDIS_REST_URL and UPSTASH_REDIS_REST_TOKEN are required at runtime"
-    );
-  }
-  return new Redis({
-    url: env.UPSTASH_REDIS_REST_URL,
-    token: env.UPSTASH_REDIS_REST_TOKEN,
-  });
-}
-
-const redis = getRedis();
+const redis = new Redis({
+  url: env.UPSTASH_REDIS_REST_URL,
+  token: env.UPSTASH_REDIS_REST_TOKEN,
+});
 
 export async function loadProtectedRoles(guildId: string) {
   const roles = await convex.query(api.roles.getProtectedRoles, {

@@ -17,5 +17,6 @@ export const env = createEnv({
     UPSTASH_REDIS_REST_TOKEN: z.string(),
   },
   runtimeEnv: process.env,
+  skipValidation: process.env.NODE_ENV === "production",
   emptyStringAsUndefined: true,
 });

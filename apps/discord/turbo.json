@@ -14,6 +14,7 @@
             "outputs": ["dist/**"]
         },
         "start-bot": {
+            "cache": false,
             "dependsOn": ["build-bot"],
             "persistent": true
         }

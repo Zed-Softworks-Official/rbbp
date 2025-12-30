@@ -10,8 +10,13 @@
             "dependsOn": ["deploy-commands"],
             "persistent": true
         },
-        "start": {
-            "dependsOn": ["build"],
+        "build-bot": {
+            "dependsOn": ["^build-bot"],
+            "outputs": ["dist/**"]
+        },
+        "start-bot": {
+            "cache": false,
+            "dependsOn": ["build-bot"],
             "persistent": true
         }
     }

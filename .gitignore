@@ -4,6 +4,7 @@
 node_modules
 .pnp
 .pnp.js
+_pagefind
 
 # Local env files
 .env

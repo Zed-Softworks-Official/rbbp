@@ -1,0 +1,122 @@
+# FAQ
+
+Common questions about RBBP answered simply.
+
+---
+
+## General
+
+### What does RBBP stand for?
+
+**R**ole-**B**ased **B**an **P**rotection.
+
+### Is RBBP free?
+
+Yes! RBBP is completely free and open source. Check out the [GitHub repository](https://github.com/Zed-Softworks-Official/rbbp).
+
+### What permissions does the bot need?
+
+| Permission | Why |
+| ---------- | --- |
+| Ban Members | To ban malicious accounts |
+| View Audit Log | To verify self-assignment |
+
+---
+
+## Trap Roles
+
+### What's a trap role?
+
+A trap role is a harmless role you add to onboarding that looks normal but acts as a honeypot. Bots that grab every available role will grab it and get banned.
+
+### What should I name my trap role?
+
+Something that blends in with your other roles:
+
+- **Bonk** (classic choice)
+- **Verify**
+- **New Member**
+- **Ping Me**
+
+Avoid names that scream "this is a trap" like "Bot Trap" or "Don't Pick This".
+
+### How many trap roles can I have?
+
+As many as you want! There's no limit.
+
+### Should trap roles have any permissions?
+
+No! Keep them completely powerless. They're just bait.
+
+---
+
+## Banning
+
+### Will RBBP ban real users?
+
+Only if they self-assign a trap role, which shouldn't happen in normal circumstances. RBBP checks the audit log to make sure the role was self-assigned, not given by a moderator.
+
+### Can I undo a ban?
+
+Yes. RBBP is just a regular ban. Go to **Server Settings** then **Bans** and unban the user if needed.
+
+### What if I want to give someone a trap role?
+
+No problem! RBBP only catches **self-assignment**. If you (or another moderator) assign the role to someone, they won't get banned.
+
+### Does RBBP only ban bots?
+
+No. RBBP bans **anyone** who self-assigns a trap role — bot or human. Most of the time it catches bots, but if a human somehow self-assigns a trap role, they'd get caught too.
+
+---
+
+## Logging
+
+### Is the log channel required?
+
+No, it's optional. But we highly recommend setting one up so you can review what RBBP catches.
+
+### What information is in the logs?
+
+Each log entry shows:
+
+- User's name, tag, and avatar
+- Account creation date
+- When they joined the server
+- Whether they're a bot
+- What roles they had
+- Which trap role triggered the ban
+
+### Can I change the log channel?
+
+Yes! Just run `/log-channel` again with the new channel.
+
+---
+
+## Troubleshooting
+
+### The bot isn't detecting anything!
+
+Check these common issues:
+
+1. **Role position** — RBBP's role needs to be above the trap roles
+2. **Permissions** — Make sure the bot has Ban Members and View Audit Log
+3. **Registration** — Verify the role is registered with `/register`
+
+### Commands aren't showing up!
+
+Make sure the bot has been properly invited with the right permissions. Try kicking and re-inviting the bot using the [invite link](/getting-started).
+
+### I accidentally registered the wrong role!
+
+No worries. Just run `/unregister` and select the role to remove it.
+
+### Will this catch bots that already have the role?
+
+No. RBBP only detects when roles are **added**. If a bot already has the trap role from before you set up RBBP, it won't be caught retroactively.
+
+---
+
+## Still have questions?
+
+Open an issue on [GitHub](https://github.com/Zed-Softworks-Official/rbbp/issues) and we'll help you out!

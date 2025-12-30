@@ -1,0 +1,102 @@
+# Getting Started
+
+Get RBBP protecting your server in under 2 minutes.
+
+---
+
+## The Trap Role Strategy
+
+RBBP works best with "trap" roles. The idea is simple:
+
+1. Create a role that looks enticing (like "Bonk" or "Member")
+2. Add it to your onboarding options
+3. Register it with RBBP
+
+Malicious bots tend to grab **every role available** during onboarding. When they grab your trap role, they get banned instantly. Legitimate users either skip the trap role or get it assigned by moderators.
+
+---
+
+## Step 1: Invite the Bot
+
+[**Click here to invite RBBP**](https://discord.com/oauth2/authorize?client_id=1453927175525896363)
+
+Make sure to grant these permissions:
+
+| Permission | Why It's Needed |
+| ---------- | --------------- |
+| Ban Members | To ban malicious accounts |
+| View Audit Log | To verify self-assignment |
+
+---
+
+## Step 2: Create a Trap Role
+
+Go to **Server Settings** then **Roles** and create a new role. Call it something like:
+
+- **Bonk** (recommended)
+- **Verify**
+- **New Member**
+
+Make sure the role has **no special permissions**. It's just bait!
+
+---
+
+## Step 3: Add to Onboarding
+
+If you use Discord's onboarding feature:
+
+1. Go to **Server Settings** then **Onboarding**
+2. Add your trap role as one of the options
+3. Make it look like a normal choice
+
+Bots will grab it automatically. Humans usually skip it or pick something else.
+
+---
+
+## Step 4: Register the Trap Role
+
+Tell RBBP to watch this role:
+
+```
+/register Bonk
+```
+
+Start typing the role name and RBBP will show matching options.
+
+Now anyone who **self-assigns** this role gets banned. If a moderator assigns it to someone, they're fine.
+
+---
+
+## Step 5: Set Up Logging (Recommended)
+
+Create a channel for ban logs, then run:
+
+```
+/log-channel #mod-logs
+```
+
+Now you'll get detailed reports whenever RBBP catches someone:
+
+- Who was banned
+- When their account was created
+- What role they tried to assign
+- Whether they were a bot
+
+---
+
+## You're Protected!
+
+That's it. RBBP is now watching your server.
+
+### What's Next?
+
+- **Add more trap roles** - Run `/register` for each one
+- **Review the commands** - See all available options in [Commands](/commands)
+- **Understand the system** - Learn how detection works in [How It Works](/how-it-works)
+
+---
+
+## Need Help?
+
+- Check the [FAQ](/faq) for common questions
+- Open an issue on [GitHub](https://github.com/Zed-Softworks-Official/rbbp/issues)

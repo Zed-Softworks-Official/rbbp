@@ -1,12 +1,11 @@
-import { useMDXComponents as getThemeComponents } from 'nextra-theme-docs'
-
-// Get the default MDX components
-const themeComponents = getThemeComponents()
+import { useMDXComponents as getThemComponents } from 'nextra-theme-docs'
 
 // Merge components
 export function useMDXComponents(components: Record<string, React.ComponentType>) {
-  return {
-    ...themeComponents,
-    ...components
-  }
+    const themeComponents = getThemComponents()
+
+    return {
+        ...themeComponents,
+        ...components
+    }
 }

@@ -1,4 +1,4 @@
-import { Events, GuildMember, EmbedBuilder, Colors, TextChannel } from 'discord.js'
+import { Events, GuildMember, EmbedBuilder, Colors, TextChannel, AuditLogEvent } from 'discord.js'
 import { api } from '@rbbp/backend/api'
 
 import { loadProtectedRoles, isProtectedRole } from '~/lib/redis'
@@ -31,9 +31,59 @@ export function registerRoleUpdatedEvent(client: ExtendedClient) {
             const isProtected = await isProtectedRole(guildId, role.id)
             if (!isProtected) continue
 
+            // Check audit log to see if this was a self-assignment
+            const isSelfAssigned = await checkSelfAssignment(newMember, role.id)
+            if (!isSelfAssigned) {
+                console.log(`Role ${role.name} was assigned by someone else, skipping`)
+                continue
+            }
+
             await handleProtectedRoleAdded(newMember, role.id, guildId)
         }
     })
+}
+
+async function checkSelfAssignment(member: GuildMember, roleId: string): Promise<boolean> {
+    const { error, data: auditLogs } = await tryCatch(
+        member.guild.fetchAuditLogs({
+            type: AuditLogEvent.MemberRoleUpdate,
+            limit: 5,
+        })
+    )
+
+    if (error) {
+        console.error('Failed to fetch audit logs:', error)
+        // If we can't check the audit log, assume it's suspicious and proceed
+        return true
+    }
+
+    // Find the most recent role update for this member
+    const relevantLog = auditLogs.entries.find(
+        entry =>
+            entry.targetId === member.id &&
+            entry.changes?.some(
+                change =>
+                    change.key === '$add' &&
+                    Array.isArray(change.new) &&
+                    change.new.some((r: { id: string }) => r.id === roleId)
+            )
+    )
+
+    if (!relevantLog) {
+        // No audit log found - this likely means it was self-assigned during onboarding
+        // Discord doesn't always create audit logs for onboarding role assignments
+        console.log('No audit log found for role change, treating as self-assignment')
+        return true
+    }
+
+    // Check if the executor is the same as the target (self-assignment)
+    const isSelfAssigned = relevantLog.executorId === member.id
+
+    console.log(
+        `Role assignment: executor=${relevantLog.executorId}, target=${member.id}, self=${isSelfAssigned}`
+    )
+
+    return isSelfAssigned
 }
 
 async function handleProtectedRoleAdded(

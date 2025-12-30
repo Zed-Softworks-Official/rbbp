@@ -1,23 +1,71 @@
-# RBBP (Role-Based Ban Protection)
-A Discord bot that automatically bans malicious bots attempting to exploit the onboarding process by self-assigning roles
+# RBBP
 
-## What is RBBP?
-RBBP monitors your server for bots that assign themselves a specific roles during the onboarding process.
-This is a common tatic used by malicious bots to gain elevated permissions.
-When detected, the bot is automatically banned.
+**Role-Based Ban Protection** — A Discord bot that catches malicious bots before they can cause damage.
+
+---
+
+## The Problem
+
+Malicious bots join servers and **grab every role they can** during the onboarding process. They exploit misconfigured servers to give themselves permissions they shouldn't have.
+
+## The Solution
+
+RBBP lets you set up "trap" roles. When a bot self-assigns one of these roles, RBBP **instantly bans them**. Legitimate users don't self-assign roles, so they're never affected.
+
+```
+Bad bot joins → Self-assigns Bonk role → Banned instantly
+```
+
+---
+
+## Quick Start
+
+**3 steps. Under 2 minutes.**
+
+1. [Invite RBBP](https://discord.com/oauth2/authorize?client_id=1453927175525896363) to your server
+2. Create a role called "Bonk" and add it to your onboarding options
+3. Run `/register Bonk` to protect it
+
+Now any bot that grabs the Bonk role during onboarding gets banned!
+
+[Full setup guide](/getting-started)
+
+---
 
 ## Features
-- **Role Protection**: Register roles that should never be self-assigned
-- **Automatic Banning**: Instantly removes bots that trigger protection
-- **Logging**: Track all protection events in a dedicated channel
+
+| Feature | Description |
+| ------- | ----------- |
+| **Trap Roles** | Create honeypot roles that catch greedy bots |
+| **Self-Assignment Detection** | Only bans users who assign roles to themselves |
+| **Instant Bans** | No delay — bots are caught immediately |
+| **Detailed Logs** | See exactly who was banned and why |
+| **Fast & Light** | Redis-cached for zero lag |
+| **Open Source** | MIT licensed, audit the code yourself |
+
+---
 
 ## Documentation
-- [Getting Started](/getting-started)
-- [Commands](/commands)
-- [Configuration](/configuration)
 
-## Quick Links
-[GitHub](https://github.com/Zed-Softworks-Official/rbbp)
+| Page | Description |
+| ---- | ----------- |
+| [Getting Started](/getting-started) | Invite the bot and set up protection |
+| [Commands](/commands) | All available commands explained |
+| [How It Works](/how-it-works) | Technical breakdown of the detection |
+| [FAQ](/faq) | Common questions answered |
+
+---
+
+## Links
+
+- [GitHub Repository](https://github.com/Zed-Softworks-Official/rbbp)
+- [Invite Bot](https://discord.com/oauth2/authorize?client_id=1453927175525896363)
+- [Report an Issue](https://github.com/Zed-Softworks-Official/rbbp/issues)
+
+---
 
 ## License
-[MIT License](https://github.com/Zed-Softworks-Official/rbbp/blob/master/LICENSE)
+
+RBBP is open source under the [MIT License](https://github.com/Zed-Softworks-Official/rbbp/blob/master/LICENSE).
+
+Built by [Zed Softworks LLC](https://zedsoftworks.dev).

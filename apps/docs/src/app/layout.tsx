@@ -21,7 +21,7 @@ const geist = Geist({
 });
 
 const banner = <Banner storageKey="oh-boy"></Banner>;
-const navbar = (<Navbar logo={<b>RBBP</b>} />)
+const navbar = (<Navbar logo={<b>RBBP</b>} projectLink="https://github.com/Zed-Softworks-Official/rbbp" />)
 
 const footer = (<Footer>MIT {new Date().getFullYear()} &copy; <Link href="https://zedsoftworks.dev">Zed Softworks LLC</Link></Footer>);
 

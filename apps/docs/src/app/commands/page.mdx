@@ -1,0 +1,94 @@
+# Commands
+
+RBBP has three simple commands. All commands require the **Ban Members** permission to use.
+
+---
+
+## /register
+
+Marks a role as a "trap" role. When anyone self-assigns this role, RBBP will automatically ban them.
+
+### Usage
+
+```
+/register [role]
+```
+
+### Parameters
+
+| Parameter | Description | Required |
+| --------- | ----------- | -------- |
+| `role` | The role you want to use as a trap | Yes |
+
+### Example
+
+```
+/register Bonk
+```
+
+This sets up "Bonk" as a trap role. Now if any bot tries to give itself the Bonk role during onboarding, it gets banned instantly.
+
+**Tip:** Start typing the role name and RBBP will show you matching roles to pick from!
+
+---
+
+## /unregister
+
+Removes a role from the trap list. RBBP will no longer monitor this role.
+
+### Usage
+
+```
+/unregister [role]
+```
+
+### Parameters
+
+| Parameter | Description | Required |
+| --------- | ----------- | -------- |
+| `role` | The trap role to unregister | Yes |
+
+### Example
+
+```
+/unregister Bonk
+```
+
+**Tip:** The autocomplete only shows roles that are currently registered, making it easy to find the right one.
+
+---
+
+## /log-channel
+
+Sets up a channel where RBBP will post detailed logs whenever it bans someone.
+
+### Usage
+
+```
+/log-channel [channel]
+```
+
+### Parameters
+
+| Parameter | Description | Required |
+| --------- | ----------- | -------- |
+| `channel` | The text channel for logging | Yes |
+
+### Example
+
+```
+/log-channel #mod-logs
+```
+
+### What Gets Logged?
+
+When RBBP bans someone, the log includes:
+
+- **User info** — username, nickname, avatar
+- **Account age** — when the account was created
+- **Join date** — when they joined your server
+- **Bot status** — whether the account is a bot
+- **Roles** — what roles they had
+- **Trigger role** — which trap role they tried to assign
+
+**Tip:** Setting up a log channel is optional but highly recommended so you can review bans.

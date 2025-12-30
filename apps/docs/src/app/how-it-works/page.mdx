@@ -1,0 +1,114 @@
+# How It Works
+
+RBBP catches bots by using "trap" roles — roles that look normal but act as honeypots.
+
+---
+
+## The Problem
+
+Malicious bots exploit Discord's onboarding process. Here's what they do:
+
+1. **Join your server** through an invite link
+2. **Grab every role available** during onboarding
+3. **Gain permissions** they shouldn't have
+4. **Spam, raid, or cause damage** before you notice
+
+These bots are greedy. They don't pick and choose — they take everything.
+
+---
+
+## The Trap Role Strategy
+
+RBBP uses this greed against them:
+
+1. You create a harmless role (like "Bonk")
+2. Add it to your onboarding options
+3. Register it with RBBP
+
+When a bot grabs every available role, it grabs your trap too. RBBP sees this and bans them instantly.
+
+```
+Bot joins → Grabs all roles including Bonk → Banned
+```
+
+Legitimate users either:
+- Skip the trap role entirely
+- Get roles assigned by moderators (not self-assigned)
+
+Either way, they're safe.
+
+---
+
+## Self-Assignment Detection
+
+RBBP doesn't just ban anyone who has a trap role. It specifically checks if the role was **self-assigned**.
+
+When a role change happens, RBBP:
+
+1. **Checks the audit log** to see who made the change
+2. **Compares executor vs target** — if they're the same person, it's self-assignment
+3. **Only bans self-assignments** — moderator-assigned roles are ignored
+
+This means you can safely use trap roles even if you sometimes assign them to users manually.
+
+---
+
+## Step-by-Step Detection
+
+Here's exactly what happens when RBBP catches a bad actor:
+
+### 1. Role Change Detected
+
+RBBP monitors the `GuildMemberUpdate` event. Whenever someone's roles change, RBBP notices.
+
+### 2. Check If Role Is Registered
+
+RBBP quickly checks if the newly added role is one you've registered using `/register`.
+
+### 3. Verify Self-Assignment
+
+RBBP fetches the audit log and confirms the user assigned the role to themselves.
+
+### 4. Immediate Action
+
+If it's a self-assignment of a trap role:
+
+- **Bans the member** instantly
+- **Logs the event** (if you've set up a log channel)
+- **Saves the data** for your records
+
+### 5. Detailed Logging
+
+The log entry includes everything you need:
+
+| Data Captured | Why It Matters |
+| ------------- | -------------- |
+| Username and Tag | Identify the account |
+| Account Age | New accounts are suspicious |
+| Join Timestamp | See how fast they acted |
+| Bot Flag | Confirms if it was a bot |
+| All Roles | See what else they grabbed |
+| Avatar | Visual identification |
+
+---
+
+## Why This Works
+
+The trap role strategy works because:
+
+1. **Bots are greedy** — They grab every role, including your trap
+2. **Bots are automated** — They can't tell the difference between real roles and traps
+3. **Humans are picky** — Real users don't grab random roles they don't understand
+4. **Self-assignment is rare** — Legitimate users get roles from moderators
+
+---
+
+## Performance
+
+RBBP is built for speed:
+
+- **Redis caching** — Trap roles are cached locally for instant lookups
+- **Event-driven** — Only activates when roles actually change
+- **Minimal API calls** — Efficiently designed to not slow down your server
+
+Your server stays protected without any noticeable impact on performance.

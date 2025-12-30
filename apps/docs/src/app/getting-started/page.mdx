@@ -1,10 +1,27 @@
 # Getting Started
 
 ## Invite the Bot
-[Click here](/) to invite the bot to your server.
+[Click here](https://discord.com/oauth2/authorize?client_id=1453927175525896363) to invite the bot to your server.
 
 ## Required Permissions
 The bot requires the following permissions:
-- Manage Roles
-- Ban Members
-- View Audit Logs
+| Permission       | Reason                                    |
+| ---------------- | ----------------------------------------- |
+| Ban Members      | To ban malicious bots                     |
+| View Audit Log   | To detect role self-assignments           |
+
+## Quick Setup
+1. **Invite the bot** using the link above.
+
+2. **Register a protected role**:
+```bash
+/register [role_name]
+```
+
+3. **Setup a log channel**:
+```bash
+/log-channel [channel_name]
+```
+
+That's it! RBBP will now automatically ban any bots that self-assign the protected roles.
+
